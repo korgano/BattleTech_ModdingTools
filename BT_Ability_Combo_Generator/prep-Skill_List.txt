@@ -1,0 +1,1 @@
+To convert SimGameConstants ability list, replace "___Skills" : [] with {}

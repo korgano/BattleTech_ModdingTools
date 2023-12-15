@@ -1,0 +1,170 @@
+{
+"Progression" : {
+    "GunnerySkills" :{
+        "Level 1": [
+            "TraitDefWeaponHit1"
+        ],
+        "Level 2": [
+            "AbilityDef_MultiTarget",
+            "TraitDefWeaponHit2"
+        ],
+        "Level 3": [
+            "TraitDefWeaponHit3"
+        ],
+        "Level 4": [
+            "AbilityDef_CIFS",
+            "AbilityDef_Missileer",
+            "AbilityDef_Suppression",
+            "TraitDefWeaponHit4"
+        ],
+        "Level 5": [
+            "TraitDefWeaponHit5",
+            "TraitDefWeaponHit5b"				
+        ],
+        "Level 6": [
+            "AbilityDef_ClosePersonal",
+            "AbilityDef_JackAll",
+            "AbilityDef_Longshot",
+            "TraitDefWeaponHit6"
+        ],
+        "Level 7": [
+            "TraitDefWeaponHit7"
+        ],
+        "Level 8": [
+            "TraitDefWeaponHit8",
+            "AbilityDef_Overclock",
+            "AbilityDef_TargetFiring"		
+        ],
+        "Level 9": [
+            "TraitDefWeaponHit9"
+        ],
+        "Level 10": [
+            "TraitDefWeaponHit10",
+            "TraitDefWeaponHit10b"            
+        ]
+    },
+    "PilotingSkills" :{
+        "Level 1": [
+            "TraitDefMeleeHit1"
+        ],
+        "Level 2": [
+            "TraitDefMeleeHit2"
+        ],
+        "Level 3": [
+            "TraitDefUnsteadySet60",
+            "TraitDefMeleeHit3"
+        ],
+        "Level 4": [
+            "TraitDefMeleeHit4",
+            "AbilityDef_RunGun",
+            "AbilityDef_SureFooting"
+        ],
+        "Level 5": [
+            "TraitDefMeleeHit5",
+            "TraitDefEvasionBoost",
+            "TraitDefEvasiveChargeAddOne"
+        ],
+        "Level 6": [
+            "AbilityDef_DodgeMaster",
+            "AbilityDef_JumpMaven",
+            "TraitDefMeleeHit6"
+            
+        ],
+        "Level 7": [
+            "TraitDefSprintIncrease20",
+            "TraitDefMeleeHit7",
+            "TraitDefEvasiveChargeAddTwo"
+        ],
+        "Level 8": [
+            "TraitDefMeleeHit8",
+            "TraitDefUnsteadySet80",
+            "AbilityDef_MechMeister",
+            "AbilityDef_Boxer"
+        ],
+        "Level 9": [
+            
+            "TraitDefMeleeHit9"
+
+        ],
+        "Level 10": [
+            "TraitDefMeleeHit10",
+            "TraitDefMeleeHit10b",
+            "TraitDefDFASelfDmgReduction"
+        ]
+    },
+    "GutsSkills" :{
+        "Level 1": [        ],
+        "Level 2": [        ],
+        "Level 3": [
+            "TraitDefHealthAddOne"
+        ],
+        "Level 4": [
+            "AbilityDef_ColdBlooded",
+            "AbilityDef_HunkerDown",
+            "TraitDefRefireReduceOne",
+            "TraitDefBerserkHitDefense"
+        ],
+        "Level 5": [		],
+        "Level 6": [
+            "AbilityDef_MaxArmor",
+            "AbilityDef_MaxStrength",
+            "TraitDefBulwark",
+            "TraitDefHealthAddTwo"
+        ],
+        "Level 7": [
+            "TraitDefOverheatAddFifteen"
+        ],
+        "Level 8": [
+            "TraitDefRefireReduceTwo",
+            "AbilityDef_CoolantVent",
+            "AbilityDefGu8"
+        ],
+        "Level 9": [
+            "TraitDefHealthAddThree",
+            "TraitDefOverheatAddThirty"
+        ],
+        "Level 10": [
+            "TraitDefHeadshotImmunity"
+        ]
+    },
+    "TacticsSkills" :{
+        "Level 1": [
+        ],
+        "Level 2": [
+            "AbilityDefT5A",
+            "TraitDefIndirectReduceOne"
+        ],
+        "Level 3": [        ],
+        "Level 4": [
+            "AbilityDef_BlindShot",
+            "AbilityDef_BreakLock",
+            "AbilityDef_MissileCounter",
+            "TraitDefMinRangeReduce45",
+            "TraitDefSpotterProficiency"
+        ],
+        "Level 5": [
+            "TraitDefCalledShotImprove"	
+        ],
+        "Level 6": [
+            "AbilityDef_ScoutStomp",
+            "AbilityDef_GimpThem",
+            "TraitDefIndirectReduceTwo",
+            "TraitDefSpotterExpert"
+        ],
+        "Level 7": [
+            "TraitDefMinRangeReduce90"
+        ],
+        "Level 8": [
+            "AbilityDef_MasterTac",
+            "AbilityDef_NetAttack",
+            "TraitDefLowProfile"
+        ],
+        "Level 9": [
+            "TraitDefCalledShotMaster"
+        ],
+        "Level 10": [
+            "TraitDefIndirectReduceThree"
+        ]
+    }
+}
+}
