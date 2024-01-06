@@ -35,6 +35,10 @@ Python Script for generating `StatusEffect` JSON data for AbilityDef, TraitDef, 
 
 For detailed information on how the `StatusEffect` data is organized, read [likwueron's analysis](https://forum.paradoxplaza.com/forum/threads/study-on-statuseffects-statisticdata.1110871/) and [check out the detailed breakdown of the game code](Docs-Detailed/Status-effects-info).
 
+## Log Cleaner Script
+
+PowerShell script for pulling specific log strings from the ModTek `battletech-log.txt file`. Replace sections in [] brackets with desired file paths or text strings you want to match.
+
 ## Credits and Attributions
 
 Scripts/tools by korgano
@@ -45,6 +49,7 @@ Scripts/tools by korgano
 * CastDef Generator
 * Merge File Generator
 * StatusEffect Generator
+* Log Cleaner Script
 
 Scripts/tools by lanleonheart 
 * 

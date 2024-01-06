@@ -777,3 +777,167 @@ This C# Unity code is a method named `DoesActorHaveECM` that checks if a given a
 6. If it iterates over all aura components and status effects and doesn't find an `ECM_GENERAL` or `ECM_GHOST` effect, it returns `false`.
 
 So, in summary, this method checks if a given actor has an ECM effect and returns `true` if it does, and `false` otherwise. Please note that the exact behavior might vary depending on the implementation of the methods and properties being used. This is a high-level explanation based on the provided code snippet.
+
+## SpecialRule Data
+
+Go to [the SpecialRule breakdown](./Status-Effect-Parts/Special-rules.md) for more information on the SpecialRule options.
+
+## ActiveAbilityEffectData
+
+```
+[SerializableContract("ActiveAbilityEffectData")]
+	public class ActiveAbilityEffectData : ISaveable
+	{
+		public ActiveAbilityEffectData()
+		{
+		}
+
+		public ActiveAbilityEffectData(string abilityName)
+		{
+			this.abilityName = abilityName;
+		}
+
+		public int Size()
+		{
+			return 0 + Serialization.StorageSpaceString(this.abilityName);
+		}
+
+		public bool ShouldSave()
+		{
+			return true;
+		}
+
+		public void Save(SerializationStream stream)
+		{
+			stream.PutString(this.abilityName);
+		}
+
+		public void Load(SerializationStream stream)
+		{
+			this.abilityName = stream.GetString();
+		}
+
+		public void LoadComplete()
+		{
+		}
+
+		[SerializableMember(SerializationTarget.SaveGame)]
+		public string abilityName;
+	}
+```
+
+This Unity C# code defines a class `ActiveAbilityEffectData` within the `BattleTech` namespace. Here's what it does in plain English:
+
+- The class `ActiveAbilityEffectData` implements the `ISaveable` interface, which means it has methods related to saving and loading data.
+- It has a public string field `abilityName` that is marked with the `SerializableMember` attribute, indicating that it should be saved when the game is saved.
+- It has two constructors:
+  - The default constructor `ActiveAbilityEffectData()` which initializes a new instance of the class.
+  - The parameterized constructor `ActiveAbilityEffectData(string abilityName)` which initializes a new instance of the class and sets the `abilityName` field.
+- The `Size()` method returns the storage space required for the `abilityName` string.
+- The `ShouldSave()` method always returns `true`, indicating that an instance of this class should be saved.
+- The `Save(SerializationStream stream)` method saves the `abilityName` to the provided `stream`.
+- The `Load(SerializationStream stream)` method loads the `abilityName` from the provided `stream`.
+- The `LoadComplete()` method is an empty method, possibly intended to be overridden in derived classes or to be filled in with additional logic later.
+
+## ActiveAbilityOrderInfo
+
+```
+public ActiveAbilityOrderInfo(AbstractActor movingUnit, ICombatant targetUnit)
+		: base(OrderType.ActiveAbility)
+	{
+		this.movingUnit = movingUnit;
+		this.targetUnit = targetUnit;
+	}
+
+	public abstract ActiveAbilityID GetActiveAbilityID();
+
+	public AbstractActor movingUnit;
+
+	public ICombatant targetUnit;
+```
+
+This Unity C# code defines an abstract class `ActiveAbilityOrderInfo` that inherits from the `OrderInfo` class. Here's what it does in plain English:
+
+- The class `ActiveAbilityOrderInfo` is an abstract class, which means it cannot be instantiated directly and is intended to be subclassed.
+- It has two public fields: `movingUnit` of type `AbstractActor` and `targetUnit` of type `ICombatant`. These fields represent the unit that is moving and the unit that is being targeted, respectively.
+- It has a constructor `ActiveAbilityOrderInfo(AbstractActor movingUnit, ICombatant targetUnit)` that takes two parameters: a moving unit and a target unit. This constructor initializes a new instance of the class and sets the `movingUnit` and `targetUnit` fields. It also calls the base class constructor with `OrderType.ActiveAbility`.
+- It has an abstract method `GetActiveAbilityID()` that returns an `ActiveAbilityID`. This method must be implemented in any non-abstract class that inherits from `ActiveAbilityOrderInfo`. This method is intended to get the ID of the active ability associated with the order.
+
+## Pilot.SortAbilityIntoLists
+
+```
+private void SortAbilityIntoLists(Ability ability)
+		{
+			AbilityDef def = ability.Def;
+			if (def.ActivationTime != AbilityDef.ActivationTiming.Passive && def.ActivationTime != AbilityDef.ActivationTiming.NotSet)
+			{
+				this.ActiveAbilities.Add(ability);
+			}
+			if (def.specialRules == AbilityDef.SpecialRules.Aura)
+			{
+				this.AuraAbilities.Add(ability);
+			}
+			if (def.ActivationTime == AbilityDef.ActivationTiming.Passive && def.specialRules == AbilityDef.SpecialRules.NotSet)
+			{
+				this.PassiveAbilities.Add(ability);
+			}
+			if (def.ActivationTime == AbilityDef.ActivationTiming.Passive && def.specialRules == AbilityDef.SpecialRules.OnInjured)
+			{
+				this.OnInjuredAbilities.Add(ability);
+			}
+			if (def.ActivationTime == AbilityDef.ActivationTiming.Passive && def.specialRules == AbilityDef.SpecialRules.OnReserve)
+			{
+				this.OnReserveAbilities.Add(ability);
+			}
+		}
+```
+
+Sure, here's what the Unity C# code does in plain English:
+
+- The function `SortAbilityIntoLists` takes an `Ability` object as an argument.
+- It retrieves the `AbilityDef` object from the `Ability` object and assigns it to the variable `def`.
+- The function then checks the `ActivationTime` and `specialRules` properties of the `def` object and sorts the `Ability` object into different lists based on these properties.
+
+Here are the conditions and the corresponding actions in bullet points:
+
+- If the `ActivationTime` of the `Ability` is neither `Passive` nor `NotSet`, the `Ability` is added to the `ActiveAbilities` list.
+- If the `specialRules` of the `Ability` is set to `Aura`, the `Ability` is added to the `AuraAbilities` list.
+- If the `ActivationTime` of the `Ability` is `Passive` and `specialRules` is `NotSet`, the `Ability` is added to the `PassiveAbilities` list.
+- If the `ActivationTime` of the `Ability` is `Passive` and `specialRules` is `OnInjured`, the `Ability` is added to the `OnInjuredAbilities` list.
+- If the `ActivationTime` of the `Ability` is `Passive` and `specialRules` is `OnReserve`, the `Ability` is added to the `OnReserveAbilities` list.
+
+This function essentially categorizes abilities based on their activation time and special rules, and adds them to the appropriate lists for further use in the program.
+
+## Pilot.GetActiveAbility
+
+```
+public Ability GetActiveAbility(ActiveAbilityID abilityID)
+		{
+			if (abilityID == ActiveAbilityID.SensorLock)
+			{
+				return this.Abilities.Find((Ability x) => x.Def.Targeting == AbilityDef.TargetingType.SensorLock);
+			}
+			return null;
+		}
+```
+
+Sure, here's what the Unity C# code does in plain English:
+
+- The function `GetActiveAbility` takes an `ActiveAbilityID` object as an argument, which is named `abilityID`.
+- It checks if the `abilityID` is equal to `ActiveAbilityID.SensorLock`.
+- If the `abilityID` is `SensorLock`, it searches the `Abilities` list for an `Ability` object where the `Targeting` property of the `Ability`'s `Def` object is `SensorLock`.
+- If it finds such an `Ability` object, it returns that object.
+- If the `abilityID` is not `SensorLock`, or if no matching `Ability` object is found, it returns `null`.
+
+Here are the actions in bullet points:
+
+- The function `GetActiveAbility` is declared, which takes an `ActiveAbilityID` named `abilityID` as an argument.
+- An `if` statement checks if `abilityID` equals `ActiveAbilityID.SensorLock`.
+- If the `if` condition is true, the function returns an `Ability` from the `Abilities` list where the `Targeting` property of the `Ability`'s `Def` object equals `AbilityDef.TargetingType.SensorLock`.
+- If the `if` condition is false, the function returns `null`.
+
+This function essentially retrieves a specific `Ability` object from the `Abilities` list based on the `abilityID` provided.
+
+## effectType Data
+
+Go to [the effectType breakdown](./Status-Effect-Parts/Effect-type.md) for more information on the SpecialRule options.
