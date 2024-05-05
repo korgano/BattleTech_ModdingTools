@@ -39,6 +39,10 @@ For detailed information on how the `StatusEffect` data is organized, read [likw
 
 PowerShell script for pulling specific log strings from the ModTek `battletech-log.txt file`. Replace sections in [] brackets with desired file paths or text strings you want to match.
 
+## Statistics Reference
+
+Go to [the Statistics breakdown](./Status-Effect-Parts/Stat=names.md) to learn about the various statistic options to use in developing units and status effects.
+
 ## Credits and Attributions
 
 Scripts/tools by korgano
